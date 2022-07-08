@@ -1,6 +1,8 @@
+//https://www.codechef.com/submit/AVGFLEX
+
 import java.util.Scanner;
 
-public class AverageFlex {
+public class AVGFlex {
     public static void main(String[] args) {
         Scanner sc  = new Scanner(System.in);
         int t = sc.nextInt();

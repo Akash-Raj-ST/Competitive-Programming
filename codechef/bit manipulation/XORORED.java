@@ -1,3 +1,4 @@
+//https://www.codechef.com/submit/XORORED
 import java.util.Scanner;
 
 public class XORORED {

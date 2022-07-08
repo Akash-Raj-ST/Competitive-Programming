@@ -1,6 +1,8 @@
+//https://www.codechef.com/submit/MAKEDIV3
+
 import java.util.Scanner;
 
-public class divisibleby3 {
+public class MAKEDIV3 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();

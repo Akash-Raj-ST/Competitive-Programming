@@ -1,5 +1,6 @@
-import java.util.*;
+//https://www.codechef.com/submit/ALTER
 
+import java.util.*;
 public class ALTER{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

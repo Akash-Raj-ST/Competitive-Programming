@@ -1,19 +1,21 @@
+//https://www.codechef.com/submit/ADDI
+
 import java.util.Scanner;
 
-public class IndivisiblePermutation {
+public class ADDI {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         int t = sc.nextInt();
 
         while(t-->0){
             int n = sc.nextInt();
-
-            System.out.print(n+" ");
-            for(int i=1;i<n;i++){
-                System.out.print(i+" ");
+            int count = 0;
+            while(n>0){
+                if(n%2==0) count++;
+                n = n/2;
             }
-            System.out.println();
+            System.out.println(count);
         }
-        sc.close();
     }
 }

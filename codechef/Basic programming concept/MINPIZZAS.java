@@ -1,7 +1,9 @@
+//https://www.codechef.com/submit/MINPIZZAS
+
 import java.util.Scanner;
 import java.math.*;
 
-public class MinimumNumberofPizzas {
+public class MINPIZZAS{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 

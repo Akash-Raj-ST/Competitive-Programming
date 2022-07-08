@@ -1,8 +1,10 @@
+//https://www.codechef.com/submit/SELINA
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class selina {
+public class SELINA {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 

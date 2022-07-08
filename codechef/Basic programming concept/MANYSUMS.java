@@ -1,3 +1,5 @@
+// https://www.codechef.com/submit/MANYSUMS
+
 import java.util.Scanner;
 
 public class MANYSUMS {

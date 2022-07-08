@@ -1,3 +1,5 @@
+https://www.codechef.com/submit/LINCHESS
+
 import java.util.Scanner;
 
 public class LINCHESS {

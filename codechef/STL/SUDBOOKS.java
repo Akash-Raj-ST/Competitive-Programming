@@ -1,6 +1,8 @@
+//https://www.codechef.com/submit/SUDBOOKS
+
 import java.util.*;
 
-public class sudhanvaAndBooks {
+public class SUDBOOKS {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 

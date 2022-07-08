@@ -1,6 +1,8 @@
+// https://www.codechef.com/submit/SMPAIR
+
 import java.util.Scanner;
 
-public class smallestPair {
+public class SMPAIR {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 

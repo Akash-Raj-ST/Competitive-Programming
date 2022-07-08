@@ -1,6 +1,8 @@
+//https://www.codechef.com/submit/KPRIME
+
 import java.util.Scanner;
 
-public class countKPrimes {
+public class KPRIME {
     public static int ans[][];
 
     public static void precompute() {

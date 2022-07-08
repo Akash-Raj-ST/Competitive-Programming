@@ -1,3 +1,5 @@
+//https://www.codechef.com/submit/SRTCHK
+
 import java.util.Scanner;
 
 public class SRTCHK {

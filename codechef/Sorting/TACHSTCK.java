@@ -1,6 +1,8 @@
+//https://www.codechef.com/submit/TACHSTCK
+
 import java.util.Scanner;
 
-public class chopsticks {
+public class TACHSTCK {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
