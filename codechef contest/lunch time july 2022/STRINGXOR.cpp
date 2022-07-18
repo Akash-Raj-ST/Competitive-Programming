@@ -15,30 +15,32 @@ int main(){
         string a,b;
         cin>>a>>b;
 
-        bool poss = true;
+        bool a_1=false;
+        
         for(int i=0;i<n;i++){
-            if(a[i]==b[i]) continue;
-
-            if(i==n-1){
-                if(a[i]!=a[i-1]) poss=false;
+            if(a[i]=='1'){
+                a_1 = true;
                 break;
             }
-
-            if(a[i]=='0'){
-                if(a[i+1]=='0'){
-                    if(!(i>0 && a[i-1]=='1')){
-                        poss = false;
-                        break;
-                    }
-                }
-            }else{
-                a[i+1]='0';
-            }
-
-
         }
 
-        if(!poss) cout<<"NO"<<"\n";
-        else cout<<"YES"<<"\n";
+        bool con = false;
+        char prev = b[0];
+        for(int i=1;i<n;i++){
+            if(b[i]==prev){
+                con=true;
+                break;
+            }
+            prev=b[i];
+        }
+
+        
+        if(a_1){
+            if(con || a==b) cout<<"YES"<<"\n";
+            else cout<<"NO"<<"\n";
+        }else{
+            if(a==b) cout<<"YES"<<"\n";
+            else cout<<"NO"<<"\n";
+        }
     }
 }
