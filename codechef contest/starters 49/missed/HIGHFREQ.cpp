@@ -17,7 +17,7 @@ int main(){
 
         for(int i=0;i<n;i++){
             cin>>num;
-            map[num]++;
+            mp[num]++;
         }
 
         int first=0,second=0;
@@ -33,7 +33,9 @@ int main(){
 
         if(first==second) cout<<first;
         else if(second==0) cout<<first/2+(first%2);
-        else cout<<second;
+        else{
+            first/2+(first%2)>second?cout<<first/2+(first%2):cout<<second;
+        }
 
         cout<<"\n";
     }
