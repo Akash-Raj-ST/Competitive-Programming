@@ -38,19 +38,13 @@ int main(){
                 }
             }
         }
-        
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                cout<<arr[i][j]<<" ";
-            }
-            cout<<"\n";
+     
+        int q;
+        cin>>q;
+        while(q--){
+            cin>>a>>b;
+            if(arr[a][b]==1) cout<<"YO"<<"\n";
+            else cout<<"NO"<<"\n";
         }
-        // int q;
-        // cin>>q;
-        // while(q--){
-        //     cin>>a>>b;
-        //     if(arr[a][b]==1) cout<<"YO"<<"\n";
-        //     else cout<<"YO"<<"\n";
-        // }
     }
 }
