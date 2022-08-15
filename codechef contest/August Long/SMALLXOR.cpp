@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <queue>
 #include <algorithm>
 
 #define ll long long int
@@ -19,50 +20,52 @@ int main(){
         ll n,x,y;
         cin>>n>>x>>y;
 
+
         vector<ll> arr(n);
 
-        for(int i=0;i<n;i++) cin>>arr[i];
-        
-        ll small,sm_index;
-        ll temp;
+        priority_queue<ll,vector<ll>,greater<ll>> pq;
+        ll num;
 
-        sort(arr.begin(),arr.end());
-
-        map<int,int> mp;
-        ll val;
-        for(int i=0;i<n;i++){
-            val = arr[i]^x;
-            mp[arr[i]] = val;
-            mp[val] = arr[i];
+        for(ll i=0;i<n;i++){
+            cin>>arr[i];
         }
-
-        bool swap;
+        
+        for(auto it:arr){
+            pq.push(it);
+        }
+        
+        bool print=true;
         while(y--){
-            swap = false;
-            arr[0] = mp[arr[0]];
-
-            for(int i=0;i<n-1;i++){
-                if(arr[i]>arr[i+1]){ 
-                    temp = arr[i];
-                    arr[i] = arr[i+1];
-                    arr[i+1] = temp;
-                    swap = true;
-                }
-                else break;
-            }
-
-            if(!swap){
+            num = pq.top();
+            num = num^x;
+            pq.pop();
+            if(n==1 || num<=pq.top()){
+                print = false;
                 if(y%2==0){
-                    for(ll i=0;i<n;i++) cout<<arr[i]<<" ";
+                    pq.push(num);
+                    while(!pq.empty()){
+                        cout<<pq.top()<<" ";
+                        pq.pop();
+                    }
                 }else{
-                    arr[0] = mp[arr[0]];
-                    for(ll i=0;i<n;i++) cout<<arr[i]<<" ";
+                    num = num^x;
+                    pq.push(num);
+                    while(!pq.empty()){
+                        cout<<pq.top()<<" ";
+                        pq.pop();
+                    }
                 }
                 break;
+            }else{
+                pq.push(num);
             }
         }
 
-        if(swap) for(ll i=0;i<n;i++) cout<<arr[i]<<" ";
+        if(print) 
+            while(!pq.empty()){
+                cout<<pq.top()<<" ";
+                pq.pop();
+            }
         cout<<"\n";
     }
 }
