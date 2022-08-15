@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #define ll long long int
 using namespace std;
 
@@ -15,45 +16,53 @@ int main(){
         ll n,m;
         cin>>n>>m;
 
-        vector<vector<ll>> arr(n,vector<ll>(m));
-        for(ll i=0;i<n;i++){
-            for(ll j=0;j<m;j++){
-                cin>>arr[i][j];
-            }
-        }
+        ll num,val;
 
-        vector<vector<ll>> arr2(n,vector<ll>(m));
+        vector<ll> arr1_f,arr1_s;
+        vector<vector<int>> a(n,vector<int>(m)),b(n,vector<int>(m));
         for(ll i=0;i<n;i++){
             for(ll j=0;j<m;j++){
-                cin>>arr2[i][j];
-            }
-        }
-
-        bool found;
-        int val;
-        for(ll i=0;i<n;i++){
-            for(ll j=0;j<m;j++){
-                found=false;
                 val = (i+j)%2;
-                for(ll i2=0;i2<n;i2++){
-                    for(ll j2=0;j2<m;j2++){
-                        if(val==(i2+j2)%2){
-                            if(arr[i][j]==arr2[i2][j2]){
-                                found=true;
-                                arr2[i2][j2]=-1;
-                                break;
-                            }
-                        }
-                    }
-                    if(found) break;
+                cin>>num;
+                a[i][j] = num;
+                if(val==0){ 
+                    arr1_f.push_back(num);
                 }
-                if(!found) break;
+                else {
+                    arr1_s.push_back(num);
+                }
             }
-            if(!found) break;
         }
 
-        if(!found) cout<<"NO";
-        else cout<<"YES";
+        vector<ll> arr2_f,arr2_s;
+
+        for(ll i=0;i<n;i++){
+            for(ll j=0;j<m;j++){
+                val = (i+j)%2;
+                cin>>num;
+                b[i][j]=num;
+                if(val==0){ 
+                    arr2_f.push_back(num);
+                }
+                else{ 
+                    arr2_s.push_back(num);
+                }
+            }
+        }
+        if(n==1 || m==1){
+            if(a==b) cout<<"YES\n";
+            else cout<<"NO\n";
+            continue;
+        }
+
+        sort(arr1_f.begin(),arr1_f.end());
+        sort(arr1_s.begin(),arr1_s.end());
+        sort(arr2_f.begin(),arr2_f.end());
+        sort(arr2_s.begin(),arr2_s.end());
+        
+
+        if(arr1_f==arr2_f && arr1_s==arr2_s) cout<<"YES";
+        else cout<<"NO";
         cout<<"\n";
 
     }
