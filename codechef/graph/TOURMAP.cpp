@@ -32,32 +32,34 @@ int main(){
         string a,b,temp;
         int c;
 
+        unordered_map<string,int> from;
+        unordered_map<string,int> to;
+
         unordered_map<string,pair<string,int>> mp;
-        unordered_map<string,bool> visited;
 
         int total=0;
         for(int i=0;i<n-1;i++){
             cin>>a>>b>>c>>temp;
 
+            from[a] = i;
+            to[b] = i;
             mp[a] = {b,c};
-            visited[a] = false;
 
             total += c;
         }
 
-        stack<string> st;
-
-        for(auto it:mp){
-            if(!visited[it.first])
-                recursive(st,visited,mp,it.first);
+        string start_city;
+        for(auto place:from){
+            if(to.find(place.first)==to.end()){
+                start_city = place.first;
+                break;
+            }
         }
-
-        while (st.size()>1)
+        
+        while (mp.find(start_city)!=mp.end())
         {
-            string p = st.top();
-            st.pop();
-
-            cout<<p<<" "<<mp[p].first<<" "<<mp[p].second<<"$\n";
+            cout<<start_city<<" "<<mp[start_city].first<<" "<<mp[start_city].second<<"$\n";
+            start_city = mp[start_city].first;
         }
 
         cout<<total<<"$\n";
