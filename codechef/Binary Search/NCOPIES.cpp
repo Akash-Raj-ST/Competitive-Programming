@@ -5,7 +5,7 @@
 #define ll long long int
 using namespace std;
 
-
+//incomplete
 // const ll m=1e9+7;
 
 ll prefix(ll num,string s){
