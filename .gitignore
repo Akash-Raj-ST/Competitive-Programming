@@ -1,8 +1,5 @@
-*.class
-.vscode
-*.exe
-why wrong
-toKnow.txt
-tempCodeRunnerFile.*
-input.txt
-output.txt
+*
+!*.c
+!*.cpp
+!*.java
+!*.ipynb
