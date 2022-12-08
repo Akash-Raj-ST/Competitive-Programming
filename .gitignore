@@ -1,5 +1,12 @@
 *
-!*.c
-!*.cpp
-!*.java
-!*.ipynb
+!*.*
+!*/
+
+*.exe
+why wrong
+toKnow.txt
+tempCodeRunnerFile.*
+input.txt
+output.txt
+
+.vscode
