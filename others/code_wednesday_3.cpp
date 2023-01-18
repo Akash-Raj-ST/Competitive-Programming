@@ -15,13 +15,20 @@ int dim_size(int f_r,int l_r,int f_c,int l_c){
 }
 
 int arr_sum(vector<vector<int>> arr,int f_r,int l_r,int f_c,int l_c){
-	int sum = 0;
+  
+  int sum = 0;
 	for(int i=f_r;i<l_r;i++){
 		for (int j = f_c; j < l_c; j++){
 			sum += arr[i][j];
 		}
 	}
+
 	return sum;
+}
+
+ll calc_hash(vector<int> v){
+  ll hash = (v[0]*100)+(v[1]*1000)+(v[2]*99)+(v[3]*999);
+  return hash;
 }
 
 
@@ -46,9 +53,9 @@ int main(){
 
     	int sum = 0;
     	for(int i=0;i<n;i++){
-    		for(int i=0;i<m;i++){
-    			cin>>arr[n][m];
-    			sum += arr[n][m];
+    		for(int j=0;j<m;j++){
+    			cin>>arr[i][j];
+    			sum += arr[i][j];
     		}
     	}
 
@@ -64,6 +71,8 @@ int main(){
 
     	int max = 0;
 
+      map<ll,bool> mp;
+      ll hash;
 
     	while(!q.empty()){
     		vector<int> v = q.front();
@@ -74,7 +83,7 @@ int main(){
     		int f_c = v[2];
     		int l_c = v[3];
 
-    		cout<<f_r<<' '<<l_r<<' '<<f_c<<' '<<l_c<<'\n';
+    		// cout<<f_r<<' '<<l_r<<' '<<f_c<<' '<<l_c<<'\n';
 
     		sum = arr_sum(arr,f_r,l_r,f_c,l_c);
 
@@ -91,27 +100,45 @@ int main(){
     				if(f_r+1<n){
     					v1 = v;
     					v1[0]++;
-    					q.push(v1);
+
+              hash = calc_hash(v1);
+              
+              if(!mp[hash])
+    					   q.push(v1);
+              mp[hash] = true;
+
     				}
     			}else
     			if(options[i]=="f_c"){
     				if(f_c+1<m){
     					v1 = v;
     					v1[2]++;
-    					q.push(v1);
+    					hash = calc_hash(v1);
+              
+              if(!mp[hash])
+                 q.push(v1);
+              mp[hash] = true;
     				}
     			}else
     			if(options[i]=="l_r"){
-    				if(l_r-1>=0){
+    				if(l_r-1>0){
     					v1 = v;
     					v1[1]--;
-    					q.push(v1);
+    					hash = calc_hash(v1);
+              
+              if(!mp[hash])
+                 q.push(v1);
+              mp[hash] = true;
     				}
     			}else{
-    				if(l_c-1>=0){
+    				if(l_c-1>0){
     					v1 = v;
     					v1[3]--;
-    					q.push(v1);
+    					hash = calc_hash(v1);
+              
+              if(!mp[hash])
+                 q.push(v1);
+              mp[hash] = true;
     				}
     			}
     		}
