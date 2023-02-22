@@ -31,31 +31,18 @@ int main(){
         arr.push_back(ele);
     }
 
-    ll optimal;
 
-    ll _sum = arr[0]+arr[1];
-    ll _avg = _sum/2;
-
-    optimal = _avg;
-
-    arr[0] = _avg + (_sum%2);
-    arr[1] = _avg;
+    ll _sum=0,_avg,ans=0;
 
 
-    for(i=2;i<n;i++){
-        _sum = arr[i]+arr[i-1];
-        _avg = _sum/2;
+    for(i=1;i<=n;i++){
+        _sum = _sum+arr[i-1];
+        _avg = _sum/i;
 
-        if(_avg+(_sum%2)>optimal){
-            optimal = _avg + (_sum%2);
-            arr[i-1] = _avg + (_sum%2);
-            arr[i] = _avg;
-        }else{
-            ll diff = optimal - (_avg+(_sum%2));
-            arr[i-1] = (_avg+(_sum%2))+diff;
-            arr[i] = _avg-diff;
-        }
+        if(_sum%i!=0) _avg+=1; 
+
+        ans = max(ans,_avg);
     }
 
-    cout<<optimal;
+    cout<<ans;
 }
