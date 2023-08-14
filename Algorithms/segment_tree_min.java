@@ -64,7 +64,6 @@ public class segment_tree_min {
     }
 
     private static int construct(int low,int high,int pos){
-        System.out.println(low+" "+high+" "+pos);
         if(high==low){
             tree[pos] = initial_arr[low];
             return tree[pos];
@@ -73,8 +72,56 @@ public class segment_tree_min {
         int mid = (high+low)/2;
 
         tree[pos] = Math.min(construct(low, mid, pos*2+1),construct(mid+1, high, pos*2+2));
-        System.out.println("Returning tree["+pos+"] "+tree[pos]);
         return tree[pos];
+    }
+
+    private static void update(int index,int val){
+        update(0, initial_arr.length-1, index, val, 0);
+    }
+
+    private static void update(int low,int high,int index,int new_value,int pos){
+        if(index<low || index>high){
+            return;
+        }
+
+        if(low==high){
+            tree[pos] = new_value;
+            return;
+        }
+        
+        int mid = (high+low)/2;
+        update(low, mid, index, new_value, pos*2+1);
+        update(mid+1, high, index, new_value, pos*2+2);
+
+        tree[pos] = Math.min(tree[pos*2+1], tree[pos*2+2]);
+    }
+
+    private static int query(int low,int high){
+        return query(0,initial_arr.length-1,low, high, 0);
+    }
+
+    private static int query(int low,int high,int query_low,int query_high,int pos){
+        if(query_low<=low && query_high>=high){
+            return tree[pos];
+        }
+
+        if(query_low>high || query_high<low){
+            return Integer.MAX_VALUE;
+        }
+
+        int mid = (high+low)/2;
+
+        return  Math.min(
+                    query(low, mid, query_low, query_high, pos*2+1),
+                    query(mid+1, high, query_low, query_high, pos*2+2)
+                );
+    }
+
+    private static void print_tree(){
+        for(int it:tree){
+            System.out.print(it+" ");
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
@@ -82,8 +129,11 @@ public class segment_tree_min {
     
         int[] arr = {2,3,-1,7,1,8};
         build(arr);
-        for(int it:tree){
-            System.out.print(it+" ");
-        }
+        print_tree();
+        // update(2, 3);
+        // print_tree();
+        int val = query(5, 5);
+        System.out.println(val);
+        
     }
 }
