@@ -125,3 +125,47 @@ public:
         return head;
     }
 };
+
+//optimized
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+
+    vector<int> preorder;
+    vector<int> inorder;
+    map<int,int> mp;
+
+    TreeNode* solve(int preStart,int preEnd,int inStart,int inEnd){
+        cout<<preStart<<' '<<preEnd<<' '<<inStart<<' '<<inEnd<<'\n';
+
+        if(preStart>preEnd || inStart>inEnd) return NULL;
+
+        TreeNode* node = new TreeNode(preorder[preStart]);
+
+        int index = mp[preorder[preStart]];
+
+        node->left = solve(preStart+1,preStart+index,inStart,index-1);
+        node->right = solve(preStart+index+1-inStart,preEnd,index+1,inEnd);
+
+        return node;
+    }
+
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        this->inorder = inorder;
+        this->preorder = preorder;
+
+        for(int i=0;i<inorder.size();i++) mp[inorder[i]]=i;
+
+        return solve(0,preorder.size()-1,0,inorder.size()-1);
+    }
+};
